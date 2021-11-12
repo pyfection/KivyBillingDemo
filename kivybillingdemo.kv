@@ -1,0 +1,25 @@
+AnchorLayout:
+    BoxLayout:
+        size_hint: 0.6, 0.6
+        orientation: 'vertical'
+        Label:
+            text: "Donate"
+        BoxLayout:
+            Slider:
+                id: amount
+    #            size_hint_y: None
+    #            height: "30dp"
+    #            input_filter: int
+                min: 0
+                max: 1000
+                value: 5
+                step: 0.01
+            Label:
+                size_hint_x: None
+                width: "50dp"
+                text: str(round(amount.value, 2)) + "$"
+        Label
+            text: "to the developer"
+        Button:
+            text: "Donate"
+            on_press: app.donate(round(amount.value, 2))
