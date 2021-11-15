@@ -7,13 +7,13 @@ title = Kivy Billing Demo
 package.name = kivybillingdemo
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.kivybillingdemo
+package.domain = org.pyfection
 
 # (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,gif,zip,json,css,ttf,java
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -28,7 +28,7 @@ source.exclude_dirs = venv
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -85,11 +85,10 @@ fullscreen = 0
 #android.presplash_color = #FFFFFF
 
 # (list) Permissions
-android.permissions = INTERNET,ACCESS_NETWORK_STATE,com.android.vending.BILLING,org.onepf.openiab.permission.BILLING,com.nokia.payment.BILLING
-android.meta_data = billing_pubkey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz6hUausdZEnPva6w2Fs23o+JAQl6neC5qf6Ho86RjP/Nc4nlnBvLxvZkneBN15aDNWodCB8M6RM2VPjmVfVjaTRRgP8itUth1xxlcBFY7ge7osINH12xAsDddEtsB7DvFGPnA38x7MURgKy78vD942vyr7AzOey/gmuoVXr5Jk4YN+N8vyK0/xRfcBm47GWQ7lJpzixSUFfSxMeptfzAjcXPDoyxyT/zEcopmXqe1I6SgHjatXBrBmo9qcZYlXr7y+Q1iii+fsM+RheAAr3H46v7IXZhF9IOyg6nyMVYs/qK2nDk8X028ycOxx1pHdo/ooXVMZNArvl0EjKXzo08ewIDAQAB"
+android.permissions = INTERNET,ACCESS_NETWORK_STATE,com.android.vending.BILLING,com.nokia.payment.BILLING
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK will support.
 #android.minapi = 21
@@ -157,7 +156,7 @@ android.meta_data = billing_pubkey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
 
 # (list) Gradle dependencies to add (currently works only with sdl2_gradle
 # bootstrap)
-#android.gradle_dependencies =
+android.gradle_dependencies = com.anjlab.android.iab.v3:library:2.0.0
 
 # (list) add java compile options
 # this can for example be necessary when importing certain java libraries using the 'android.gradle_dependencies' option
@@ -167,7 +166,7 @@ android.meta_data = billing_pubkey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
 # (list) Gradle repositories to add {can be necessary for some android.gradle_dependencies}
 # please enclose in double quotes 
 # e.g. android.gradle_repositories = "maven { url 'https://kotlin.bintray.com/ktor' }"
-#android.add_gradle_repositories =
+android.add_gradle_repositories = "mavenCentral()"
 
 # (list) packaging options to add 
 # see https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html
@@ -219,8 +218,8 @@ android.logcat_filters = *:S python:D
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1
 
-# (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.arch = armeabi-v7a
+# (list) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
+android.arch = armeabi-v7a, arm64-v8a, x86, x86_64
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
@@ -234,7 +233,7 @@ android.arch = armeabi-v7a
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
-#p4a.branch = master
+p4a.branch = develop
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #p4a.source_dir =

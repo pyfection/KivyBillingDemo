@@ -1,0 +1,6 @@
+buildozer @ git+https://github.com/misl6/buildozer.git@4f34f314208ff9710defaa655c0ca5df29eec80d
+Cython==0.29.24
+IABwrapper==0.0.2
+Kivy==2.0.0
+pyjnius==1.4.1
+requests==2.26.0

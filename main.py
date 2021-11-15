@@ -1,36 +1,40 @@
 """
 A simple App in Kivy to demonstrate billing for Google Play
 
-Billing library is a modified and updated version of:
-https://github.com/knappador/billing-example
+Billing library:
+https://github.com/shashi278/android-iab-v3-kivy
 """
-import os
 
+from kivy.core.window import Window
+Window.size = (1280, 720)
+import os
 
 from kivy.app import App
 from kivy.properties import ObjectProperty
 
-from billing import Billing
+# from iabwrapper import PythonBillingProcessor
 
 
-PROD_DONATE = 'kivybillingdemo.prod.donate'
+PRODUCTS = {
+    1: 'kivybillingdemo.prod.donate',
+    5: 'kivybillingdemo.prod.donate5',
+    10: 'kivybillingdemo.prod.donate10',
+    100: 'kivybillingdemo.prod.donate100',
+}
 
 
 class KivyBillingDemo(App):
-    skus = [
-        PROD_DONATE,
-        'android.test.purchased',
-    ]
     billing = ObjectProperty()
 
     def on_start(self):
-        pub_key = os.getenv('GPAY_PUB_KEY')
-        self.billing = Billing(pub_key, self.skus)
-        # self.billing.set_retry_prompt(modal_ctl.ask_retry_purchase)
+        license_key = os.getenv("KBD_LICENSE")
+        # self.billing = PythonBillingProcessor(
+        #     license_key
+        # )
 
     def donate(self, amount):
-        print('wants to donate', amount, '$')
-        self.billing.purchase(PROD_DONATE)
+        print('wants to donate', amount, 'EUR')
+        # self.billing.purchase(PRODUCTS[amount])
         print("Donated!")
 
 
